@@ -9,3 +9,9 @@ Runnable.
  método tick() e render, tick é nosso update, render é aonde será desenhado, no método principal
  aonde foi instanciado o construtor game será estarteado, para testar se está sendo executado em
  tick coloque uma mensagem.
+ 
+ - Desenhando no método render, usaremos BufferedStrategy com parametros no 3 retornando ao void,
+ criando um objeto private BufferedImage fundo, instanciando ao construtor com o tipo RGB, adicionando
+ Graphics g = fundo.getGraphics(); g = bs.getDrawGraphics();, para chamar imagem use g.drawImage(fundo,
+ posX, posY, null); bs.show(); para poder mostrar a imagem e atualizar.
+ 
