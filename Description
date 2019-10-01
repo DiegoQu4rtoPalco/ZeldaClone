@@ -18,3 +18,16 @@ Runnable.
  - Agora vamos fazer nosso jogo rodar em 60 FPS, modo que muitos jogadores usam, e mostrar no console
   em tempo real, para isso usaremos algumas variáveis, adicione método stop após duas chaves.
  
+ 
+ - Agora usaremos orientação a objetos para organização dos códigos e suas utilidade em pacotes novos
+ novo pacote com.zelda.entities aonde sera os movimentos do jogo, pacote com.zelda.graficos aonde trabalhara
+ com imagens, dentro desse pacote nova classe SpriteSheet com suas configurações, dentro do paconte entities
+ vamos criar classe Entities e vamos adicionar variaves de movimentos e tamanho, adicionar ao construtor e seus
+ métodos Setters. Criando nova classe Player extendendo a classe Enteties, observe que pede para adicionar construtor
+ com super, classe aonde pega todos os dados já criado da classe entities. Depois na classe Main vamos trabalhar com List
+ cria se um objeto public List<Entities> entities, instanciando no construtor chamando o objeto e e a classe, com o laço
+ for nos métodos tick e render passaremos a variavel i pegando os métodos das outras classes, para imagem aparecer na 
+ classe Main instanciaremos direto no contrutor a classe Player player com parametros (0, 0, 65, 65, spriteScheet.getSprite(0, 
+ 0, 65, 65)); antes disso spriteSheet no construro mostrara o caminho da imagem, spriteSheet = new SpriteSheet("/personagem.png");
+ execute o programa se tudo ocorrer bem a imagem aparece na tela.
+ 
