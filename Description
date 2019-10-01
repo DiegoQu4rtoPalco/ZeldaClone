@@ -1,3 +1,11 @@
  - Criando Janela do jogo tamanho e largura, extendendo ao canvas e implementando
 Runnable.
 
+ - Criando métodos start e stop, variáveis Boolean isRunning true, aonde método start
+ é true e stop é false. Método start iremos instanciar Thread, thread é quando se existe
+ vários processos sendo executado ele reconhece mais de um processo, depois estartei thread,
+ já no método stop thread.join e aceite as exceções, vamos para o métod run, vamos usar agora
+ a expreção booleana isRunning no método run, dizer assim while(isRunnig){}; dentro das aspas
+ método tick() e render, tick é nosso update, render é aonde será desenhado, no método principal
+ aonde foi instanciado o construtor game será estarteado, para testar se está sendo executado em
+ tick coloque uma mensagem.
