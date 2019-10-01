@@ -15,3 +15,6 @@ Runnable.
  Graphics g = fundo.getGraphics(); g = bs.getDrawGraphics();, para chamar imagem use g.drawImage(fundo,
  posX, posY, null); bs.show(); para poder mostrar a imagem e atualizar.
  
+ - Agora vamos fazer nosso jogo rodar em 60 FPS, modo que muitos jogadores usam, e mostrar no console
+  em tempo real, para isso usaremos algumas variáveis, adicione método stop após duas chaves.
+ 
