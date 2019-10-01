@@ -4,6 +4,8 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import com.zelda.entities.Entities;
 import com.zelda.entities.Player;
 import com.zelda.graficos.SpriteSheet;
 
-public class Main extends Canvas implements Runnable {
+public class Main extends Canvas implements Runnable, KeyListener {
 
 	private static final long serialVersionUID = 1L;
 	private static final int WHIDTH = 1366;
@@ -26,6 +28,7 @@ public class Main extends Canvas implements Runnable {
 	private BufferedImage fundo;
 	public List<Entities> entities;
 	public SpriteSheet spriteSheet;
+	private Player player;
 
 	public Main() {
 		this.setPreferredSize(new Dimension(WHIDTH, HEIGHT));
@@ -33,8 +36,9 @@ public class Main extends Canvas implements Runnable {
 		fundo = new BufferedImage(WHIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		entities = new ArrayList<Entities>();
 		spriteSheet = new SpriteSheet("/personagem.png");
-		Player player = new Player(0, 0, 65, 65, spriteSheet.getSprite(0, 0, 65, 65));
+		player = new Player(0, 0, 65, 65, spriteSheet.getSprite(0, 0, 65, 65));
 		entities.add(player);
+		addKeyListener(this);
 	}
 
 	public synchronized void start() {
@@ -100,6 +104,7 @@ public class Main extends Canvas implements Runnable {
 	}
 
 	public void render() {
+		
 		BufferStrategy bs = this.getBufferStrategy();
 		if (bs == null) {
 			this.createBufferStrategy(3);
@@ -107,7 +112,8 @@ public class Main extends Canvas implements Runnable {
 		}
 		Graphics g = fundo.getGraphics();
 		g = bs.getDrawGraphics();
-		
+		g.setColor(Color.WHITE);
+		g.fillRect(0, 0, WHIDTH, HEIGHT);
 		for(int i = 0; i < entities.size(); i++) {
 			entities.get(i).render(g);
 		}
@@ -120,5 +126,48 @@ public class Main extends Canvas implements Runnable {
 		for(int i = 0; i < entities.size(); i++) {
 			entities.get(i).tick();
 		}
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
+			player.right = true;
+			
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
+			player.left = true;
+		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
+			player.up = true;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
+			player.down = true;
+		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT || e.getKeyCode() == KeyEvent.VK_D) {
+			player.right = false;
+			
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_LEFT || e.getKeyCode() == KeyEvent.VK_A) {
+			player.left = false;
+		}
+		
+		if(e.getKeyCode() == KeyEvent.VK_UP || e.getKeyCode() == KeyEvent.VK_W) {
+			player.up = false;
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_DOWN || e.getKeyCode() == KeyEvent.VK_S) {
+			player.down = false;
+		}
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		
 	}
 }
