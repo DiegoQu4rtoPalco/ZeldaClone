@@ -1,0 +1,3 @@
+ - Criando Janela do jogo tamanho e largura, extendendo ao canvas e implementando
+Runnable.
+
