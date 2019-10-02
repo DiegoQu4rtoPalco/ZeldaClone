@@ -27,7 +27,7 @@ public class Main extends Canvas implements Runnable, KeyListener {
 	private Thread thread;
 	private BufferedImage fundo;
 	public List<Entities> entities;
-	public SpriteSheet spriteSheet;
+	public static SpriteSheet spriteSheet;
 	private Player player;
 
 	public Main() {

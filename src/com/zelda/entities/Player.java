@@ -1,6 +1,9 @@
 package com.zelda.entities;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+
+import zelda.clone.Main;
 
 public class Player extends Entities {
 	
@@ -9,18 +12,38 @@ public class Player extends Entities {
 	public boolean up;
 	public boolean down;
 	public double speed = 2.1;
-
+	
+	private BufferedImage[] rightPlayer;
+	private BufferedImage[] leftPlayer;
+	
+	private int dir = 0;
+	private int dir_Right = 0;
+	private int dir_Left = -1;
+	
 	public Player(int x, int y, int whidth, int height, BufferedImage sprite) {
 		super(x, y, whidth, height, sprite);
+		
+		rightPlayer = new BufferedImage[3];
+		leftPlayer = new BufferedImage[3];
+		
+		for(int i = 0; i < 3; i++) {
+			rightPlayer[i] = Main.spriteSheet.getSprite(0 + (i * 65), 0, 65, 65);
+		}
+		
+		for(int i = 0; i < 3; i++) {
+			leftPlayer[i] = Main.spriteSheet.getSprite(0 + (i * 65), 65, 65, 65);
+		}
 
 	}
 	
 	public void tick() {
 		if(right) {
 			x+=speed;
+			dir = dir_Right;
 		}
 		else if(left) {
 			x-=speed;
+			dir = dir_Left;
 		}
 		if(up) {
 			y-=speed;
@@ -30,7 +53,15 @@ public class Player extends Entities {
 		}
 	}
 
-	
+	public void render(Graphics g) {
+		if(dir == dir_Right) {
+			g.drawImage(rightPlayer[0], this.getX(), this.getY(), null);
+		}
+		else if(dir == dir_Left) {
+			g.drawImage(leftPlayer[0], this.getX(), this.getY(), null);
+		}
+		
+	}
 	
 
 }

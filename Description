@@ -42,3 +42,22 @@ Runnable.
  
  - Para poder deixar o movimento mais linear, mais sensivel vamos alterar as variáveis x e y da classe Entities, vamos passar
  para double, alguns erros surgirão nos métodos getX e getY, vamos fazer o casting para antes da variváveis, (int)x e int(y).
+ 
+ 
+ - Mudaremos um poucos os métodos de acesso aos Sprites, na classe Player vamos adiconar novo método render, com parametros Graphics g
+ importes as bibliotecas, observe personagem não visivel, mais, para podermos trabalhar e ter acesso mais agíl vamos mudar para public static o objeto
+ SpriteSheet da classe main, voltando para classe Player, novos objetos private BufferedImage rightPlayer[]; leftPlayer[], usaremos vetores
+ para acesso de cada imagem que será instanciado, no construtor instanciaremos rightPlayer = new BufferedImage[quantidadeDeImagens], assim fazer
+ com leftPlayer também, agora usando o laço for para percorrer a variável i, lembrando que i é menor que quantidade de imagens locada no vetores
+ dentro das chaves vamos dizer assim rightPlayer[i] = Main.spriteSheet.getSpriteSheet(posição da imagem + (i * tamanhoDoSprite), 0, tamanhoDoSprite,
+ tamanhoDoSprite); Para testar com uma imagem apenas, no método render dentro das chaves g.drawImage(rightPlayer[0], this.getX, this.getY, null);
+ agora iremos renderizar movimento no método render, função if right após chaves g.drawImage(rightPlayer[0]...) else if g.drawImage(leftPlayer[0]);
+ execute o programa, observe apenas aparece quando movimentamos o personagem, teremos que fazer outra funcão para ele fica fixo mesmo quando não
+ se usa ação do teclado, novas variáveis private int dir = 0; dir_Right = 1; dir_Left = -1;, no método render, agora na função se dir == dir_Right
+ rightPlayer[]..., ele if dir == dir_Left outra sequências de imagens, no método tick é simples dir = dir_Right, dir = dir_Left em cada função 
+ relacionada.
+ 
+ 
+ 
+ 
+
