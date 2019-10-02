@@ -57,6 +57,18 @@ Runnable.
  rightPlayer[]..., ele if dir == dir_Left outra sequências de imagens, no método tick é simples dir = dir_Right, dir = dir_Left em cada função 
  relacionada.
  
+ - Agora usaremos todos os Sprites de movimento, para ficar mais realista, novas variaveis para função em método tickt, private int frames, maxFrames, index e maxIndex,
+ private Boolean moved que recebe false, método gereal recebe moved false e toda função recebe moved true, agora uma nova função se moved abre chaves, dentro da chaves
+ frame++, se frame for igual a maxFrames, dentro da chaves frame igual a zero, index+=, outra função se index for maior que maxIndex, dentro da chaves index igual a zero.
+ 
+ - Agora iremos trabalhar com mapas em reconhecimento de pixels, classe que irá percorrer as cores pixel por pixel e assim detectando a cor usada, para organização vamos 
+ criar um novo pacote com.zelda.world, nova classe World, criando método contrutor instanciaremos direto BufferedImage map = ImageIO.read(getClass().getResource(path), não
+ esqueça de parametros String path no construtor, na classe principal Main, vamos chamar a classe public static Word word, no construtor instanciar por primeiro com o caminho
+ da imagem map.png, aceita a exceçoes Try Catch para posssiveis erros, usaremos vetor para pegar pontoWidth e pontoHeight da imagem no próprio construtor abaixo do BufferedImage, 
+ int [] pixels = [map.getWhidth() * map.getHeight()]; para pode ler a cor em RGB usaremos map.getRGB(0, 0, map.getWhidth(), map.getHeight(), pixels, 0, map.getWhidht); agora usando 
+ laço for para percorrer cada pixel da imagem se variavei i for menor que pixels.length, variavel i ++, dentro da chaves função para pegar a cor, se pixels na variável i for igual
+ a cor hex 0xFF0A02FF, dentro da chaves mensagem, "Existe a cor azul", dica no desenho do mapa usando o selecionar de cores você consegue pegar o valor hexadecimal das cores por 
+ exempo aqui foi usado azul, 0A02FF, se acaso não reconhecet coloque 0xFF antes, vai ficar assim 0xFF0A02FF.
  
  
  

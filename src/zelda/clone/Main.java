@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import com.zelda.entities.Entities;
 import com.zelda.entities.Player;
 import com.zelda.graficos.SpriteSheet;
+import com.zelda.world.Word;
 
 public class Main extends Canvas implements Runnable, KeyListener {
 
@@ -29,13 +30,16 @@ public class Main extends Canvas implements Runnable, KeyListener {
 	public List<Entities> entities;
 	public static SpriteSheet spriteSheet;
 	private Player player;
+	public static Word word;
 
 	public Main() {
+		word = new Word("/map.png");
 		this.setPreferredSize(new Dimension(WHIDTH, HEIGHT));
 		initFrame();
+		
 		fundo = new BufferedImage(WHIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		entities = new ArrayList<Entities>();
-		spriteSheet = new SpriteSheet("/personagem.png");
+		spriteSheet = new SpriteSheet("/personagem_02.png");
 		player = new Player(0, 0, 65, 65, spriteSheet.getSprite(0, 0, 65, 65));
 		entities.add(player);
 		addKeyListener(this);
