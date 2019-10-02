@@ -39,3 +39,6 @@ Runnable.
  no método KeyPressed entres chaves dizer se player.right = true, nas demais funções colocar em true, já no método
  KeyReleased deixar em false, assim que soltar da tecla o personagem para, não esqueça de ter um fundo antes do personagem
  para pode limpar a tela assim que o personagem se movimentar.
+ 
+ - Para poder deixar o movimento mais linear, mais sensivel vamos alterar as variáveis x e y da classe Entities, vamos passar
+ para double, alguns erros surgirão nos métodos getX e getY, vamos fazer o casting para antes da variváveis, (int)x e int(y).
